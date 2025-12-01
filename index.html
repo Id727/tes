@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NetHub Digital | Toko Kuota Internet</title>
+  <style>
+    /*
+    =======================================================
+    SEMUA KODE CSS LENGKAP TETAP BERADA DI SINI
+    (Tidak ada perubahan dari versi sebelumnya)
+    =======================================================
+    */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    @keyframes marquee {
+        0% { transform: translateX(100%); }
+        100% { transform: translateX(-100%); }
+    }
+    
+    @keyframes slideIn {
+        0% { transform: translateY(100%); opacity: 0; }
+        10% { transform: translateY(0); opacity: 1; }
+        90% { transform: translateY(0); opacity: 1; }
+        100% { transform: translateY(100%); opacity: 0; }
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(180deg, #f9fafc 0%, #eef1f6 100%);
+      color: #333;
+      display: flex; 
+      flex-direction: column; 
+      align-items: center;
+      padding: 20px 20px 0; 
+      min-height: 100vh; 
+    }
+
+    header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, #ffffff, #f8f9fb);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      border-radius: 15px;
+      padding: 15px 20px;
+      max-width: 600px;
+    }
+
+    .logo-text {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #007aff;
+      letter-spacing: 0.5px;
+    }
+
+    .hero-section {
+        width: 100%;
+        max-width: 600px;
+        text-align: center;
+        margin-bottom: 20px;
+        padding: 0; 
+    }
+    
+    .marquee-container {
+        overflow: hidden;
+        white-space: nowrap;
+        background: #f0f7ff; 
+        border: 1px solid #d0e4ff;
+        border-radius: 6px; 
+        padding: 4px 0; 
+        margin: 0 0 12px 0; 
+        width: 100%; 
+    }
+    .marquee-text {
+        display: inline-block;
+        font-family: 'Poppins', sans-serif;
+        font-size: 0.85rem; 
+        font-weight: 600;
+        color: #007aff;
+        animation: marquee 25s linear infinite; 
+        padding-right: 200px; 
+    }
+    
+    .trust-stats {
+        display: flex;
+        justify-content: space-around;
+        gap: 5px; 
+        padding: 4px 0; 
+        border-radius: 8px; 
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        background: #ffffff; 
+        border: 1px solid #e0e0e0; 
+        width: 100%; 
+    }
+    .stat-item {
+        line-height: 1.1; 
+        padding: 4px 0; 
+        flex-basis: 33%; 
+    }
+    .stat-item span {
+        font-family: 'Poppins', sans-serif;
+        font-size: 0.9rem; 
+        font-weight: 700;
+        color: #007aff;
+        display: block;
+    }
+    .stat-item small {
+        font-size: 0.65rem; 
+        color: #555;
+    }
+    
+    .main-content {
+        display: flex;
+        flex-direction: column; 
+        width: 100%;
+        max-width: 600px; 
+        gap: 20px;
+        align-items: center;
+        flex-grow: 1; 
+        padding-bottom: 20px; 
+    }
+    
+    .category-container {
+      display: flex;
+      flex-direction: row;
+      gap: 15px;
+      width: 100%;
+      flex-shrink: 0;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .category {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      border-radius: 15px; 
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+      padding: 18px 10px; 
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+      background: #ffffff;
+      color: #333;
+      border: none;
+      width: 110px;
+      height: 110px;
+      position: relative;
+      overflow: hidden;
+      justify-content: center;
+    }
+    
+    .category:hover {
+        transform: translateY(-3px); 
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        background: #f7f7f7;
+    }
+    
+    .category.active {
+        background-color: #e6f0ff;
+        border: 2px solid #007aff; 
+        transform: scale(1.02);
+    }
+
+    .category img {
+      width: 50px; 
+      height: 50px; 
+      margin-bottom: 5px; 
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2)); 
+      transition: transform 0.3s;
+    }
+    
+    .category h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9rem; 
+      font-weight: 600;
+    }
+    
+    .product-utility-link {
+        display: block;
+        text-align: center;
+        margin-bottom: 20px;
+        padding: 10px 15px; 
+        background: #007aff;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background 0.2s, transform 0.2s;
+        box-shadow: 0 3px 6px rgba(0, 122, 255, 0.4);
+    }
+
+    .product-list {
+      display: none;
+      width: 100%; 
+      max-width: 600px; 
+      text-align: left;
+      margin-top: 25px; 
+    }
+
+    .product-card {
+      background: #ffffff;
+      border-radius: 15px;
+      margin-bottom: 15px; 
+      padding: 20px; 
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      border-left: 6px solid #007aff;
+      transition: 0.3s;
+    }
+
+    .product-card h4 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.1rem; 
+      color: #333;
+      margin-bottom: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .product-card h4 span {
+        color: #007aff;
+        font-weight: 700;
+        flex-grow: 1;
+    }
+    
+    .ready-status {
+        color: #28a745; 
+        font-weight: 600;
+        font-size: 0.9rem; 
+    }
+    .status-habis {
+        color: #dc3545;
+        font-weight: 600;
+        font-size: 0.9rem; 
+    }
+
+    .product-card p {
+      font-size: 0.9rem; 
+      margin-bottom: 12px;
+      color: #666;
+      line-height: 1.6;
+    }
+    
+    .product-card strong {
+        color: #e91e63;
+        font-size: 1.15rem; 
+    }
+
+    .buy-btn {
+      background: #28a745;
+      color: white;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.2s;
+      box-shadow: 0 3px 6px rgba(40, 167, 69, 0.4);
+    }
+    .buy-btn:hover {
+        background: #218838;
+        transform: translateY(-1px);
+    }
+    
+    .sold-out-btn {
+        background: #6c757d;
+        cursor: not-allowed;
+    }
+    .sold-out-btn:hover {
+        background: #6c757d;
+        transform: none;
+    }
+    
+    .close-btn { 
+        background: #ff5722;
+        color: white;
+        border: none;
+        padding: 10px 25px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: 0.2s;
+        box-shadow: 0 3px 6px rgba(255, 87, 34, 0.4);
+        margin-top: 10px; 
+    }
+    .close-btn:hover {
+        background: #e64a19;
+        transform: translateY(-1px);
+    }
+
+
+    #notification-container {
+      position: fixed;
+      bottom: 20px; 
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100; 
+      max-width: 90%;
+      pointer-events: none; 
+    }
+
+    .fake-notification {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 12px 15px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      border-left: 5px solid #28a745; 
+      transition: all 0.5s ease-in-out;
+      opacity: 0; 
+      transform: translateY(100%);
+      font-size: 0.9rem;
+      color: #333;
+      min-width: 250px;
+    }
+    
+    .fake-notification.show {
+        animation: slideIn 6s ease-in-out forwards; 
+    }
+
+    .notif-icon {
+        color: #28a745; 
+        font-size: 1.5rem;
+        margin-right: 10px;
+        line-height: 1;
+    }
+    
+    .notif-text strong {
+        color: #007aff;
+    }
+    
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6); 
+      backdrop-filter: blur(5px); 
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: 18px; 
+      padding: 20px; 
+      width: 90%;
+      max-width: 350px; 
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal-content h3 {
+      font-family: 'Poppins', sans-serif;
+      margin-bottom: 15px; 
+      font-size: 1.3rem; 
+    }
+
+    .modal-content input[type="number"] {
+      width: 100%;
+      padding: 10px; 
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px; 
+      font-size: 1rem; 
+      text-align: center;
+    }
+
+    .transaction-details {
+        text-align: left;
+        margin-bottom: 15px; 
+        padding-bottom: 10px; 
+        border-bottom: 1px dashed #ddd; 
+    }
+    .transaction-details p {
+        font-size: 0.95rem;
+        margin-bottom: 5px; 
+        display: flex; 
+        justify-content: space-between; 
+    }
+    .transaction-details p strong {
+        font-size: 1.05rem; 
+    }
+
+
+    .qr-container {
+        margin-top: 5px; 
+        margin-bottom: 10px; 
+    }
+    
+    .qr-image {
+      width: 180px; 
+      height: 180px; 
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+
+    #payment-timer {
+        font-size: 1rem; 
+        margin-bottom: 8px; 
+        color: #dc3545;
+    }
+
+    .payment-instructions {
+        background: #f0f7ff; 
+        border: 1px solid #d0e4ff;
+        padding: 12px; 
+        margin-top: 15px;
+        border-radius: 8px;
+        text-align: left;
+    }
+    .payment-instructions p {
+        margin: 5px 0; 
+        font-size: 0.85rem; 
+        color: #666;
+        line-height: 1.4;
+    }
+
+    footer {
+      margin-top: 50px;
+      padding-top: 15px;
+      text-align: center;
+      color: #666;
+      font-size: 0.85rem;
+      width: 100%;
+      max-width: 900px;
+      padding-bottom: 20px; 
+      border-top: 1px solid #eee; 
+    }
+
+    footer a {
+      color: #007aff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <header id="main-header">
+    <div class="logo-text">⚡ NetHub Digital</div>
+  </header>
+  
+  <div class="hero-section">
+      <div class="marquee-container">
+          <span class="marquee-text">
+              Layanan Isi Kuota Cepat, Aman, & Otomatis. &bull; Proses Instan 24 Jam Nonstop. &bull; Jaminan Harga Termurah! &nbsp; 
+          </span>
+          <span class="marquee-text">
+              Layanan Isi Kuota Cepat, Aman, & Otomatis. &bull; Proses Instan 24 Jam Nonstop. &bull; Jaminan Harga Termurah!
+          </span>
+      </div>
+      
+      <div class="trust-stats">
+          <div class="stat-item">
+              <span>99.9%</span>
+              <small>Sukses Transaksi</small>
+          </div>
+          <div class="stat-item">
+              <span>15.000+</span>
+              <small>Pelanggan Aktif</small>
+          </div>
+          <div class="stat-item">
+              <span>24/7</span>
+              <small>Proses Otomatis</small>
+          </div>
+      </div>
+  </div>
+
+  <div class="main-content">
+    
+    <section class="category-container">
+      <div class="category" id="cat-indosat" onclick="toggleProducts('indosat')">
+        <img src="https://iili.io/KyFri8u.png" alt="Indosat" />
+        <h3>Kuota Indosat</h3>
+      </div>
+
+      <div class="category" id="cat-telkomsel" onclick="toggleProducts('telkomsel')">
+        <img src="https://iili.io/KyF4MAb.png" alt="Telkomsel" />
+        <h3>Kuota Telkomsel</h3>
+      </div>
+
+      <div class="category" id="cat-xl" onclick="toggleProducts('xl')">
+        <img src="https://iili.io/KyF66mb.png" alt="XL Akrab" />
+        <h3>Kuota XL Akrab</h3>
+      </div>
+    </section>
+
+    <section id="productSection" class="product-list"></section>
+  </div>
+
+  <div id="paymentModal" class="modal">
+    <div class="modal-content" id="modalContent">
+      </div>
+  </div>
+
+  <div id="notification-container"></div>
+
+  <footer>
+    Butuh bantuan? Hubungi <a href="https://wa.me/6285751817154" target="_blank">Admin</a><br>
+    © 2025 NetHub Digital. Semua Hak Dilindungi.
+  </footer>
+
+<script src="product-data.js"></script> 
+
+<script src="notification.js"></script> 
+
+<script>
+    // =======================================================
+    // FUNGSI UTAMA DAN VARIABEL GLOBAL (Interaksi Tampilan)
+    // =======================================================
+
+    function formatProductDesc(desc) {
+        if (desc.startsWith('❌ Habis')) {
+            return `<span class='status-habis'>❌ Habis</span> | ${desc.substring(9).replace(/<br>/g, '\n')}`;
+        }
+        if (desc.startsWith('✅ Ready Stock')) {
+            return `<span class='ready-status'>✅ Ready Stock</span> | ${desc.substring(16).replace(/<br>/g, '\n')}`;
+        }
+        return desc.replace(/<br>/g, '\n');
+    }
+
+    // Variabel Global yang dibutuhkan oleh payment.js
+    let activeCategory = null;
+    let selectedPrice = 0;
+    let selectedProduct = '';
+    let countdownInterval = null;
+
+
+    function closeModal() {
+        document.getElementById('paymentModal').style.display = 'none';
+        if (countdownInterval) {
+            clearInterval(countdownInterval);
+            countdownInterval = null;
+        }
+    }
+
+    function startCountdown(duration, displayElement) {
+        let timer = duration,
+            minutes, seconds;
+
+        if (countdownInterval) {
+            clearInterval(countdownInterval);
+        }
+
+        countdownInterval = setInterval(function () {
+            minutes = parseInt(timer / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            displayElement.innerHTML = `Batas Waktu: <strong>${minutes}:${seconds}</strong>`;
+
+            if (--timer < 0) {
+                clearInterval(countdownInterval);
+                countdownInterval = null;
+                displayElement.innerHTML = "<strong style='color: red;'>Waktu Habis!</strong>";
+
+                setTimeout(closeModal, 2000);
+            }
+        }, 1000);
+    }
+    
+    // Fungsi yang menggunakan data 'products' dari product-data.js
+    function toggleProducts(category) {
+        const section = document.getElementById('productSection');
+        const allCategories = document.querySelectorAll('.category');
+        const currentCategoryElement = document.getElementById(`cat-${category}`);
+
+        let shouldScroll = true;
+
+        if (activeCategory === category) {
+            section.style.display = 'none';
+            currentCategoryElement.classList.remove('active');
+            activeCategory = null;
+            return;
+        }
+
+        if (activeCategory !== null) {
+            shouldScroll = false;
+        }
+
+        activeCategory = category;
+
+        allCategories.forEach(cat => cat.classList.remove('active'));
+        currentCategoryElement.classList.add('active');
+
+        section.innerHTML = '';
+
+        if (category === 'xl') {
+            const checkAreaLink = document.createElement('a');
+            checkAreaLink.href = "https://raw.githack.com/vieralola/Cekareaviera.html/main/Cekareaviera.html";
+            checkAreaLink.target = "_blank";
+            checkAreaLink.className = "product-utility-link";
+            checkAreaLink.textContent = "🗺️ Cek Area XL Akrab (Wajib Klik!)";
+            section.appendChild(checkAreaLink);
+        }
+
+        products[category].forEach(p => { 
+            const isReady = p.desc.startsWith('✅ Ready Stock');
+            const statusText = isReady ? `<span class='ready-status'>✅ Ready</span>` : `<span class='status-habis'>❌ Habis</span>`;
+            const buttonClass = isReady ? 'buy-btn' : 'buy-btn sold-out-btn';
+            const buttonAction = isReady ? `onclick='openModal(${p.price}, "${p.name}")'` : 'disabled';
+
+            const rawDesc = p.desc.replace(/✅ Ready Stock \| /, '').replace(/❌ Habis \| /, '');
+
+            const div = document.createElement('div');
+            div.className = 'product-card';
+
+            div.innerHTML = `
+                <h4><span>${p.name}</span>${statusText}</h4>
+                <p>${rawDesc.replace(/<br>/g, '<br>')}</p>
+                <p><strong>Harga: Rp ${p.price.toLocaleString('id-ID')}</strong></p>
+                <button class='${buttonClass}' ${buttonAction}>${isReady ? 'Beli Sekarang' : 'Stok Habis'}</button>
+            `;
+            section.appendChild(div);
+        });
+
+        section.style.display = 'block';
+        if (shouldScroll) {
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+
+    // Fungsi yang menetapkan variabel global yang akan digunakan payment.js
+    function openModal(price, productName) {
+        selectedPrice = price;
+        selectedProduct = productName;
+        document.getElementById('modalContent').innerHTML = `
+            <h3>Masukkan Nomor HP</h3>
+            <input type='number' id='phoneNumber' placeholder='Contoh: 081234567890' />
+            <button class='buy-btn' onclick='showQR()'>Bayar Sekarang</button>
+            <button class='close-btn' onclick='closeModal()'>Batal</button>
+        `;
+        document.getElementById('paymentModal').style.display = 'flex';
+    }
+
+</script>
+
+<script src="payment.js"></script> 
+</body>
+</html>
